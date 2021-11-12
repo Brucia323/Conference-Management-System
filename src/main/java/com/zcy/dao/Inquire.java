@@ -1,5 +1,6 @@
 package com.zcy.dao;
 
+import com.google.gson.Gson;
 import com.zcy.DBHelper.MySQL;
 import com.zcy.entity.Department;
 import com.zcy.entity.Meeting;
@@ -368,5 +369,57 @@ public class Inquire {
         preparedStatement.close();
         connection.close();
         return meetings;
+    }
+    
+    /**
+     * 查询会议室
+     *
+     * @return 会议室列表
+     */
+    public List<MeetingRoom> inquireMeetingRoom() throws ClassNotFoundException, SQLException {
+        String sql = "select * from meeting_room";
+        Class.forName(MySQL.DRIVER);
+        Connection connection = DriverManager.getConnection(MySQL.URL, MySQL.USER, MySQL.PASSWORD);
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<MeetingRoom> meetingRooms = new ArrayList<>();
+        while (resultSet.next()) {
+            MeetingRoom meetingRoom = new MeetingRoom(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
+                    resultSet.getInt(4), resultSet.getString(5), resultSet.getString(6));
+            meetingRooms.add(meetingRoom);
+        }
+        resultSet.close();
+        preparedStatement.close();
+        connection.close();
+        return meetingRooms;
+    }
+    
+    /**
+     * 根据部门id查询员工
+     *
+     * @param departmentId 部门id
+     * @return 员工列表
+     */
+    public String getStaffByDepartment(int departmentId) throws ClassNotFoundException, SQLException {
+        String sql = "select * from staff where department = ?";
+        Class.forName(MySQL.DRIVER);
+        Connection connection = DriverManager.getConnection(MySQL.URL, MySQL.USER, MySQL.PASSWORD);
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, departmentId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        List<Staff> staffs = new ArrayList<>();
+        while (resultSet.next()) {
+            Staff staff = new Staff(resultSet.getInt(1), resultSet.getString(2), resultSet.getString(3),
+                    resultSet.getString(4), resultSet.getString(5), resultSet.getString(6),
+                    inquireDepartmentName(resultSet.getInt(7)),
+                    resultSet.getString(8));
+            staffs.add(staff);
+        }
+        resultSet.close();
+        preparedStatement.close();
+        connection.close();
+        Gson gson = new Gson();
+        String json = gson.toJson(staffs);
+        return json;
     }
 }

@@ -22,7 +22,7 @@ public class Update {
      * @param state    会议室状态
      * @param remark   备注
      */
-    public void addRoom(String roomNum, String roomName, int roomMax, int state, String remark) throws ClassNotFoundException, SQLException {
+    public void addRoom(String roomNum, String roomName, int roomMax, String state, String remark) throws ClassNotFoundException, SQLException {
         String sql = "insert into meeting_room(room_number,name,max,state,remark) values(?,?,?,?,?)";
         Class.forName(MySQL.DRIVER);
         Connection connection = DriverManager.getConnection(MySQL.URL, MySQL.USER, MySQL.PASSWORD);
@@ -30,7 +30,7 @@ public class Update {
         preparedStatement.setString(1, roomNum);
         preparedStatement.setString(2, roomName);
         preparedStatement.setInt(3, roomMax);
-        preparedStatement.setInt(4, state);
+        preparedStatement.setString(4, state);
         preparedStatement.setString(5, remark);
         preparedStatement.executeUpdate();
     }
