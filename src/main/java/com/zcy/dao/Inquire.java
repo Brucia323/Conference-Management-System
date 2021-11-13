@@ -24,14 +24,14 @@ public class Inquire {
      * @param currentPage 当前页
      * @return 会议列表
      */
-    public List<Meeting> inquireMeeting(String staffId, int currentPage) throws ClassNotFoundException, SQLException {
+    public List<Meeting> inquireMeeting(int staffId, int currentPage) throws ClassNotFoundException, SQLException {
         String sql = "select * from meeting where id = (select meeting_id from participants where staff_id = ?) and " +
-                "state = '预定' " +
-                "limit ?,10";
+                "state = '预定' and start > now() order by id limit" +
+                " ?,10";
         Class.forName(MySQL.DRIVER);
         Connection connection = DriverManager.getConnection(MySQL.URL, MySQL.USER, MySQL.PASSWORD);
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
-        preparedStatement.setString(1, staffId);
+        preparedStatement.setInt(1, staffId);
         preparedStatement.setInt(2, (currentPage - 1) * 10);
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Meeting> meetings = new ArrayList<>();
@@ -282,17 +282,19 @@ public class Inquire {
     }
     
     /**
-     * 查询我预定的会议
+     * 分页查询我预定的会议
      *
-     * @param staffId 员工ID
+     * @param staffId     员工ID
+     * @param currentPage 当前页
      * @return 会议列表
      */
-    public List<Meeting> inquireMyMeeting(int staffId) throws ClassNotFoundException, SQLException {
-        String sql = "select * from meeting where Booker = ? and state = '预定'";
+    public List<Meeting> inquireMyMeeting(int staffId, int currentPage) throws ClassNotFoundException, SQLException {
+        String sql = "select * from meeting where Booker = ? and state = '预定' and start > now() limit ?,10";
         Class.forName(MySQL.DRIVER);
         Connection connection = DriverManager.getConnection(MySQL.URL, MySQL.USER, MySQL.PASSWORD);
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
         preparedStatement.setInt(1, staffId);
+        preparedStatement.setInt(2, (currentPage - 1) * 10);
         ResultSet resultSet = preparedStatement.executeQuery();
         List<Meeting> meetings = new ArrayList<>();
         while (resultSet.next()) {
@@ -351,7 +353,7 @@ public class Inquire {
     public List<Meeting> inquireMyCancelMeeting(int staffId) throws ClassNotFoundException, SQLException {
         String sql = "select * from meeting where id = (select meeting_id from participants where staff_id = ?) and " +
                 "state = " +
-                "'取消'";
+                "'取消' and start > now()";
         Class.forName(MySQL.DRIVER);
         Connection connection = DriverManager.getConnection(MySQL.URL, MySQL.USER, MySQL.PASSWORD);
         PreparedStatement preparedStatement = connection.prepareStatement(sql);
@@ -421,5 +423,28 @@ public class Inquire {
         Gson gson = new Gson();
         String json = gson.toJson(staffs);
         return json;
+    }
+    
+    /**
+     * 查询我预定的会议的数量
+     *
+     * @param staffId 员工id
+     * @return 数量
+     */
+    public int inquireMyBookMeetingCount(int staffId) throws ClassNotFoundException, SQLException {
+        String sql = "select count(*) from meeting where Booker = ? and state = '预定' and start > now()";
+        Class.forName(MySQL.DRIVER);
+        Connection connection = DriverManager.getConnection(MySQL.URL, MySQL.USER, MySQL.PASSWORD);
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setInt(1, staffId);
+        ResultSet resultSet = preparedStatement.executeQuery();
+        int count = 0;
+        while (resultSet.next()) {
+            count = resultSet.getInt(1);
+        }
+        resultSet.close();
+        preparedStatement.close();
+        connection.close();
+        return count;
     }
 }

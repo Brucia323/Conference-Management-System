@@ -47,7 +47,8 @@ public class Update {
      * @param staffId     预定员工ID
      * @param state       会议状态
      */
-    public void addMeeting(String meetingName, int peopleNum, String startTime, String endTime, int roomId, String description, int staffId, int state) throws ClassNotFoundException, SQLException {
+    public void addMeeting(String meetingName, int peopleNum, String startTime, String endTime, int roomId,
+                           String description, int staffId, String state) throws ClassNotFoundException, SQLException {
         String sql = "insert into meeting(name,participants,start,end,room,description,Booker,state) values(?,?," +
                 "?,?,?,?,?,?)";
         Class.forName(MySQL.DRIVER);
@@ -60,7 +61,7 @@ public class Update {
         preparedStatement.setInt(5, roomId);
         preparedStatement.setString(6, description);
         preparedStatement.setInt(7, staffId);
-        preparedStatement.setInt(8, state);
+        preparedStatement.setString(8, state);
         preparedStatement.executeUpdate();
     }
     

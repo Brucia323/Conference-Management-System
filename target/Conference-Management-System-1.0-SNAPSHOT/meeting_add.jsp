@@ -1,3 +1,4 @@
+<%@ page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -13,7 +14,7 @@
     <script src="node_modules/jquery/dist/jquery.js"></script>
     <script src="scripts/meeting_add.js"></script>
 </head>
-<body>
+<body onload="getStaffListByDepartmentId()">
 <main>
     <table>
         <tr>
@@ -27,23 +28,22 @@
         <tr>
             <td>预计开始时间</td>
             <td>
-                <input type="date" id="start_date" required>
-                <input type="time" id="start_time" required>
+<%--                限制只能选择明天开始的日期--%>
+                <input type="datetime-local" id="start_time" required min="${date}">
             </td>
         </tr>
         <tr>
             <td>预计结束时间</td>
             <td>
-                <input type="date" id="end_date" required>
-                <input type="time" id="end_time" required>
+                <input type="datetime-local" id="end_time" required min="${date}">
             </td>
         </tr>
         <tr>
             <td>会议室名称</td>
             <td>
-                <select id="meeting_room_name">
+                <select id="meeting_room_name" onchange="checkMeetingRoom()">
                     <c:forEach var="meeting_room" items="${meetingRooms}">
-                        <option value="${meeting_room.meetingRoomId}">${meeting_room.meetingRoomName}</option>
+                        <option id="${meeting_room.meetingRoomId}" value="${meeting_room.meetingRoomId}">${meeting_room.meetingRoomName}</option>
                     </c:forEach>
                 </select>
             </td>
@@ -60,13 +60,19 @@
                         <option value="${department.departmentId}">${department.departmentName}</option>
                     </c:forEach>
                 </select>
-                <div id="staff">
-                    <div id="false"></div>
-                    <div id="true"></div>
-                </div>
+            </td>
+        </tr>
+        <tr>
+            <td></td>
+            <td>
+                <div id="staff"></div>
             </td>
         </tr>
     </table>
+    <div>
+        <button onclick="addMeeting()">预定会议</button>
+        <button onclick="reset()">重置</button>
+    </div>
 </main>
 </body>
 </html>
