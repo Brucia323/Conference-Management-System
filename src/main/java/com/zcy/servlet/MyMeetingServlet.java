@@ -11,6 +11,11 @@ import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.sql.SQLException;
 
+/**
+ * 加载我参与的会议页面
+ *
+ * @author ZZZCNY
+ */
 @WebServlet(name = "MyMeetingServlet", value = "/MyMeetingServlet")
 public class MyMeetingServlet extends HttpServlet {
     @Override

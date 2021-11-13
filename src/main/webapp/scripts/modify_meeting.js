@@ -32,3 +32,27 @@ function show_meeting() {
     $("#meeting_end_time").text(meeting_end_time);
     $("#description").val(meeting_description);
 }
+
+/**
+ * 修改会议说明
+ */
+function modify_description() {
+    var meeting_id = localStorage.meeting_id;
+    var description = $("#description").val();
+    $.ajax({
+        type: "POST",
+        url: "ModifyMeetingServlet",
+        data: {
+            meeting_id: meeting_id,
+            description: description
+        },
+        success: function (data) {
+            if (data == "success") {
+                alert("修改成功");
+                $(location).attr('href', 'MyBookServlet');
+            } else {
+                alert("修改失败");
+            }
+        }
+    });
+}

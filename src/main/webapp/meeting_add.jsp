@@ -1,4 +1,3 @@
-<%@ page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -6,6 +5,11 @@
   Date: 2021/11/12
   Time: 下午 4:27
   To change this template use File | Settings | File Templates.
+--%>
+<%--
+    预定会议页面
+    从MeetingAddServlet.java页面跳转
+    需要从localStorage加载staff_id 员工id
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -15,7 +19,11 @@
     <script src="scripts/meeting_add.js"></script>
 </head>
 <body onload="getStaffListByDepartmentId()">
+<header></header>
 <main>
+    <aside></aside>
+    <nav></nav>
+    <div>会议信息</div>
     <table>
         <tr>
             <td>会议名称</td>
@@ -75,5 +83,6 @@
         <button onclick="reset()">重置</button>
     </div>
 </main>
+<footer></footer>
 </body>
 </html>

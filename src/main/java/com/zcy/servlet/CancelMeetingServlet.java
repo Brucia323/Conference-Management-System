@@ -11,6 +11,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+/**
+ * 取消会议
+ *
+ * @author ZZZCNY
+ */
 @WebServlet(name = "CancelMeetingServlet", value = "/CancelMeetingServlet")
 public class CancelMeetingServlet extends HttpServlet {
     @Override

@@ -11,6 +11,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+/**
+ * 检查会议室冲突
+ *
+ * @author ZZZCNY
+ */
 @WebServlet(name = "CheckMeetingRoomServlet", value = "/CheckMeetingRoomServlet")
 public class CheckMeetingRoomServlet extends HttpServlet {
     @Override

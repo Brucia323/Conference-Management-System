@@ -5,6 +5,12 @@
   Time: 下午 6:43
   To change this template use File | Settings | File Templates.
 --%>
+<%--
+    最新通知页面
+    从NewServlet.java跳转
+    需要传入参数：
+        1. staff_id 员工id
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -12,7 +18,10 @@
     <title>最新通知</title>
 </head>
 <body>
+<header></header>
 <main>
+    <aside></aside>
+    <nav></nav>
     <div>未来7天我要参加的会议</div>
     <table>
         <tr>
@@ -48,5 +57,6 @@
         </c:forEach>
     </table>
 </main>
+<footer></footer>
 </body>
 </html>

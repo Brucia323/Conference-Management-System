@@ -126,4 +126,18 @@ public class Update {
         preparedStatement.setInt(1, meetingId);
         preparedStatement.executeUpdate();
     }
+    /**
+     * 修改会议说明
+     * @param meetingId 会议id
+     * @param description 会议说明
+     */
+    public void updateMeetingDescription(int meetingId,String description) throws ClassNotFoundException, SQLException {
+        String sql = "update meeting set description = ? where id = ?";
+        Class.forName(MySQL.DRIVER);
+        Connection connection = DriverManager.getConnection(MySQL.URL, MySQL.USER, MySQL.PASSWORD);
+        PreparedStatement preparedStatement = connection.prepareStatement(sql);
+        preparedStatement.setString(1, description);
+        preparedStatement.setInt(2, meetingId);
+        preparedStatement.executeUpdate();
+    }
 }

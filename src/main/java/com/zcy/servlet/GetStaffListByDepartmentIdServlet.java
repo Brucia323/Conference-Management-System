@@ -11,6 +11,11 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.SQLException;
 
+/**
+ * 获取部门里的员工列表
+ *
+ * @author ZZZCNY
+ */
 @WebServlet(name = "GetStaffListByDepartmentIdServlet", value = "/GetStaffListByDepartmentIdServlet")
 public class GetStaffListByDepartmentIdServlet extends HttpServlet {
     @Override

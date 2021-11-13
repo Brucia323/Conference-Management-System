@@ -12,6 +12,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * 加载最新通知页面
+ *
+ * @author ZZZCNY
+ */
 @WebServlet(name = "NewServlet", value = "/NewServlet")
 public class NewServlet extends HttpServlet {
     @Override

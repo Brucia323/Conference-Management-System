@@ -14,7 +14,11 @@
     <script src="scripts/meeting_room_add.js"></script>
 </head>
 <body>
+<header></header>
 <main>
+    <aside></aside>
+    <nav></nav>
+    <div>会议室信息</div>
     <table>
         <tr>
             <td>门牌号</td>
@@ -45,5 +49,6 @@
     <button onclick="add()">添加</button>
     <button onclick="reset()">重置</button>
 </main>
+<footer></footer>
 </body>
 </html>

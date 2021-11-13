@@ -13,6 +13,11 @@ import java.io.IOException;
 import java.sql.SQLException;
 import java.util.List;
 
+/**
+ * 加载会议预定页
+ *
+ * @author ZZZCNY
+ */
 @WebServlet(name = "MeetingAddServlet", value = "/MeetingAddServlet")
 public class MeetingAddServlet extends HttpServlet {
     @Override

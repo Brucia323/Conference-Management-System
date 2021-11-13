@@ -6,6 +6,11 @@ import com.zcy.dao.Update;
 
 import java.sql.SQLException;
 
+/**
+ * 预定会议
+ *
+ * @author ZZZCNY
+ */
 public class AddMeeting {
     /**
      * 预定会议
