@@ -15,7 +15,9 @@
 <html>
 <head>
     <title>预定会议</title>
+    <link rel="stylesheet" href="node_modules/antd/dist/antd.css">
     <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/antd/dist/antd.js"></script>
     <script src="scripts/meeting_add.js"></script>
 </head>
 <body onload="getStaffListByDepartmentId()">
@@ -27,11 +29,11 @@
     <table>
         <tr>
             <td>会议名称</td>
-            <td><input type="text" id="meeting_name" required maxlength="255"></td>
+            <td><input type="text" id="meeting_name" required maxlength="255" minlength="1"></td>
         </tr>
         <tr>
             <td>预计参加人数</td>
-            <td><input type="number" id="meeting_number" required max="99"></td>
+            <td><input type="number" id="meeting_number" required max="99" min="1"></td>
         </tr>
         <tr>
             <td>预计开始时间</td>
@@ -78,7 +80,7 @@
             </td>
         </tr>
     </table>
-    <div>
+    <div id="button">
         <button onclick="addMeeting()">预定会议</button>
         <button onclick="reset()">重置</button>
     </div>

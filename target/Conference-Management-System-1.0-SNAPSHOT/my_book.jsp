@@ -5,6 +5,10 @@
   Time: 下午 12:03
   To change this template use File | Settings | File Templates.
 --%>
+<%--
+    我预定的会议页面
+    从MyBookServlet.java跳转
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -15,7 +19,11 @@
     <script src="scripts/modify_meeting.js"></script>
 </head>
 <body>
+<header></header>
 <main>
+    <aside></aside>
+    <nav></nav>
+    <div>我预定的会议：</div>
     <table>
         <tr>
             <th>会议名称</th>
@@ -51,5 +59,6 @@
         </a>
     </div>
 </main>
+<footer></footer>
 </body>
 </html>

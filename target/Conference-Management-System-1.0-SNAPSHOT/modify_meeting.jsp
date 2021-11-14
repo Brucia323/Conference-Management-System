@@ -5,6 +5,10 @@
   Time: 下午 2:17
   To change this template use File | Settings | File Templates.
 --%>
+<%--
+    修改会议预定页面
+    从ModifyMeetingServlet.java跳转
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -14,7 +18,11 @@
     <script src="scripts/modify_meeting.js"></script>
 </head>
 <body onload="show_meeting()">
+<header></header>
 <main>
+    <aside></aside>
+    <nav></nav>
+    <div>会议信息</div>
     <table>
         <tr>
             <td>会议名称</td>
@@ -35,7 +43,7 @@
         <tr>
             <td>会议说明</td>
             <td>
-                <textarea id="description" rows="5" cols="50"></textarea>
+                <textarea id="description" rows="5" cols="50" maxlength="255"></textarea>
             </td>
         </tr>
         <tr>
@@ -59,10 +67,9 @@
         </tr>
     </table>
     <div>
-        <a href="#">
-            <button>返回</button>
-        </a>
+        <button onclick="modify_description()">保存</button>
     </div>
 </main>
+<footer></footer>
 </body>
 </html>

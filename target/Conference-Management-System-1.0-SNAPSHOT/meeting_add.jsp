@@ -1,4 +1,3 @@
-<%@ page import="java.util.Date" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
@@ -7,28 +6,39 @@
   Time: 下午 4:27
   To change this template use File | Settings | File Templates.
 --%>
+<%--
+    预定会议页面
+    从MeetingAddServlet.java页面跳转
+    需要从localStorage加载staff_id 员工id
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
     <title>预定会议</title>
+    <link rel="stylesheet" href="node_modules/antd/dist/antd.css">
     <script src="node_modules/jquery/dist/jquery.js"></script>
+    <script src="node_modules/antd/dist/antd.js"></script>
     <script src="scripts/meeting_add.js"></script>
 </head>
 <body onload="getStaffListByDepartmentId()">
+<header></header>
 <main>
+    <aside></aside>
+    <nav></nav>
+    <div>会议信息</div>
     <table>
         <tr>
             <td>会议名称</td>
-            <td><input type="text" id="meeting_name" required></td>
+            <td><input type="text" id="meeting_name" required maxlength="255" minlength="1"></td>
         </tr>
         <tr>
             <td>预计参加人数</td>
-            <td><input type="text" id="meeting_number" required></td>
+            <td><input type="number" id="meeting_number" required max="99" min="1"></td>
         </tr>
         <tr>
             <td>预计开始时间</td>
             <td>
-<%--                限制只能选择明天开始的日期--%>
+                <%--                限制只能选择明天开始的日期--%>
                 <input type="datetime-local" id="start_time" required min="${date}">
             </td>
         </tr>
@@ -43,14 +53,15 @@
             <td>
                 <select id="meeting_room_name" onchange="checkMeetingRoom()">
                     <c:forEach var="meeting_room" items="${meetingRooms}">
-                        <option id="${meeting_room.meetingRoomId}" value="${meeting_room.meetingRoomId}">${meeting_room.meetingRoomName}</option>
+                        <option id="${meeting_room.meetingRoomId}"
+                                value="${meeting_room.meetingRoomId}">${meeting_room.meetingRoomName}</option>
                     </c:forEach>
                 </select>
             </td>
         </tr>
         <tr>
             <td>会议说明</td>
-            <td><textarea id="meeting_description" required></textarea></td>
+            <td><textarea id="meeting_description" required maxlength="255"></textarea></td>
         </tr>
         <tr>
             <td>选择参会人员</td>
@@ -69,10 +80,11 @@
             </td>
         </tr>
     </table>
-    <div>
+    <div id="button">
         <button onclick="addMeeting()">预定会议</button>
         <button onclick="reset()">重置</button>
     </div>
 </main>
+<footer></footer>
 </body>
 </html>

@@ -5,6 +5,10 @@
   Time: 下午 3:33
   To change this template use File | Settings | File Templates.
 --%>
+<%--
+    查看会议室页面
+    需要从MeetingRoomListServlet.java跳转
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
@@ -12,14 +16,17 @@
     <title>查看会议室</title>
 </head>
 <body>
+<header></header>
 <main>
+    <aside></aside>
+    <nav></nav>
+    <div>所有会议室：</div>
     <table>
         <tr>
             <th>门牌编号</th>
             <th>会议室名称</th>
             <th>容纳人数</th>
             <th>当前状态</th>
-            <th>操作</th>
         </tr>
         <c:forEach items="${meetingRoomList.meetingRooms}" var="meetingRoom">
             <tr>
@@ -27,9 +34,6 @@
                 <td>${meetingRoom.meetingRoomName}</td>
                 <td>${meetingRoom.meetingRoomMax}</td>
                 <td>${meetingRoom.meetingRoomState}</td>
-                <td>
-                    <button onclick="">查看详情</button>
-                </td>
             </tr>
         </c:forEach>
     </table>
@@ -49,5 +53,6 @@
         </a>
     </div>
 </main>
+<footer></footer>
 </body>
 </html>

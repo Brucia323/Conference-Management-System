@@ -1,3 +1,9 @@
+// import React from "react";
+// import ReactDOM from "react-dom";
+// import {Button} from "antd";
+// import "antd/dist/antd.css";
+
+
 var staff_list = [];
 
 /**
@@ -121,3 +127,11 @@ function checkMeetingRoom() {
 function removeMeetingRoom(meetingRoomId) {
     $("#" + meetingRoomId).remove();
 }
+
+// ReactDOM.render(
+//     <>
+//         <Button type="primary" onClick={addMeeting}>预定会议</Button>
+//         <Button onClick={reset}>重置</Button>
+//     </>,
+//     document.getElementById("button"),
+// );
