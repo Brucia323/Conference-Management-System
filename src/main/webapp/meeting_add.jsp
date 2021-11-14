@@ -27,11 +27,11 @@
     <table>
         <tr>
             <td>会议名称</td>
-            <td><input type="text" id="meeting_name" required></td>
+            <td><input type="text" id="meeting_name" required maxlength="255"></td>
         </tr>
         <tr>
             <td>预计参加人数</td>
-            <td><input type="text" id="meeting_number" required></td>
+            <td><input type="number" id="meeting_number" required max="99"></td>
         </tr>
         <tr>
             <td>预计开始时间</td>
@@ -59,7 +59,7 @@
         </tr>
         <tr>
             <td>会议说明</td>
-            <td><textarea id="meeting_description" required></textarea></td>
+            <td><textarea id="meeting_description" required maxlength="255"></textarea></td>
         </tr>
         <tr>
             <td>选择参会人员</td>

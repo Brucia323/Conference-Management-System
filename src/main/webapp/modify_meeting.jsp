@@ -43,7 +43,7 @@
         <tr>
             <td>会议说明</td>
             <td>
-                <textarea id="description" rows="5" cols="50"></textarea>
+                <textarea id="description" rows="5" cols="50" maxlength="255"></textarea>
             </td>
         </tr>
         <tr>

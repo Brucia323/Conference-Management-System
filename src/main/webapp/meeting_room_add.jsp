@@ -22,15 +22,15 @@
     <table>
         <tr>
             <td>门牌号</td>
-            <td><input type="text" id="room_number" required></td>
+            <td><input type="text" id="room_number" required maxlength="255"></td>
         </tr>
         <tr>
             <td>会议室名称</td>
-            <td><input type="text" id="room_name" required></td>
+            <td><input type="text" id="room_name" required maxlength="255"></td>
         </tr>
         <tr>
             <td>最多容纳人数</td>
-            <td><input type="text" id="room_max" required></td>
+            <td><input type="number" id="room_max" required max="99"></td>
         </tr>
         <tr>
             <td>当前状态</td>
@@ -43,7 +43,7 @@
         </tr>
         <tr>
             <td>备注</td>
-            <td><textarea id="remark"></textarea></td>
+            <td><textarea id="remark" maxlength="255"></textarea></td>
         </tr>
     </table>
     <button onclick="add()">添加</button>
