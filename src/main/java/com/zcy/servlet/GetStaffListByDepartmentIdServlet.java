@@ -20,6 +20,7 @@ import java.sql.SQLException;
 public class GetStaffListByDepartmentIdServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         int departmentId = Integer.parseInt(request.getParameter("department_id"));

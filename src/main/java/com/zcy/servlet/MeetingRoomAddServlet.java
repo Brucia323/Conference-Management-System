@@ -21,6 +21,7 @@ public class MeetingRoomAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         String roomNumber = request.getParameter("room_number");
         String roomName = request.getParameter("room_name");

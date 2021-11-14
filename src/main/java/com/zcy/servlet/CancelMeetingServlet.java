@@ -20,6 +20,8 @@ import java.sql.SQLException;
 public class CancelMeetingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
         int meetingId = Integer.parseInt(request.getParameter("meetingId"));
         Update update = new Update();

@@ -20,6 +20,8 @@ import java.sql.SQLException;
 public class MyMeetingServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         int staffId = Integer.parseInt(request.getParameter("staff_id"));
         int currentPage = 1;
         String currentPageStr = request.getParameter("currentPage");

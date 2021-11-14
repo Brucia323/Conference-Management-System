@@ -21,6 +21,8 @@ import java.util.List;
 public class NewServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         int staffId = Integer.parseInt(request.getParameter("staff_id"));
         Inquire inquire = new Inquire();
         try {

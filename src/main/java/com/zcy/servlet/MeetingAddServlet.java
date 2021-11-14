@@ -22,6 +22,8 @@ import java.util.List;
 public class MeetingAddServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        request.setCharacterEncoding("utf-8");
+        response.setCharacterEncoding("utf-8");
         Inquire inquire = new Inquire();
         try {
             List<MeetingRoom> meetingRooms = inquire.inquireMeetingRoom();
