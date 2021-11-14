@@ -30,7 +30,7 @@
         </tr>
         <tr>
             <td>最多容纳人数</td>
-            <td><input type="number" id="room_max" required max="99"min="1"></td>
+            <td><input type="number" id="room_max" required max="99" min="1"></td>
         </tr>
         <tr>
             <td>当前状态</td>
