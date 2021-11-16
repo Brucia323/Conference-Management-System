@@ -75,6 +75,10 @@ function addMeeting() {
     var meeting_description = $("#meeting_description").val();
     var staff_list_str = JSON.stringify(staff_list);
     var staff_id = localStorage.staff_id;
+    if (staff_id == null) {
+        alert("请先登录");
+        return;
+    }
     $.post("AddMeetingServlet", {
         meeting_name: meeting_name,
         meeting_number: meeting_number,

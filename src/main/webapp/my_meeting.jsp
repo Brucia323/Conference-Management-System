@@ -44,12 +44,18 @@
         </c:forEach>
     </table>
     <div class="page">
+        <a href="MyMeetingServlet?currentPage=1">
+            <button>首页</button>
+        </a>
         <a href="MyMeetingServlet?currentPage=${meetingList.currentPage==1?1:meetingList.currentPage+1}">
             <button>上一页</button>
         </a>
         第${meetingList.currentPage}页/共${meetingList.totalPage}页
         <a href="MyMeetingServlet?currentPage=${meetingList.currentPage==meetingList.totalPage?meetingList.totalPage:meetingList.currentPage+1}">
             <button>下一页</button>
+        </a>
+        <a href="MyMeetingServlet?currentPage=${meetingList.totalPage}">
+            <button>尾页</button>
         </a>
     </div>
 </main>

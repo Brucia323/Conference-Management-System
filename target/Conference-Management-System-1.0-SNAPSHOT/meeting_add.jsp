@@ -17,7 +17,6 @@
     <title>预定会议</title>
     <link rel="stylesheet" href="node_modules/antd/dist/antd.css">
     <script src="node_modules/jquery/dist/jquery.js"></script>
-    <script src="node_modules/antd/dist/antd.js"></script>
     <script src="scripts/meeting_add.js"></script>
 </head>
 <body onload="getStaffListByDepartmentId()">
