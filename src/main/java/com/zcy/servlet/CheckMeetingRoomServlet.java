@@ -28,8 +28,8 @@ public class CheckMeetingRoomServlet extends HttpServlet {
         request.setCharacterEncoding("utf-8");
         response.setCharacterEncoding("utf-8");
         PrintWriter out = response.getWriter();
-        String startTime = request.getParameter("start_date") + " " + request.getParameter("start_time");
-        String endTime = request.getParameter("end_date") + " " + request.getParameter("end_time");
+        String startTime = request.getParameter("start_time");
+        String endTime = request.getParameter("end_time");
         int meetingRoomId = Integer.parseInt(request.getParameter("meeting_room"));
         Inquire inquire = new Inquire();
         try {
