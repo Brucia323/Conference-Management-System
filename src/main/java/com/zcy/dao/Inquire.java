@@ -25,7 +25,7 @@ public class Inquire {
      * @return 会议列表
      */
     public List<Meeting> inquireMeeting(int staffId, int currentPage) throws ClassNotFoundException, SQLException {
-        String sql = "select * from meeting where id = (select meeting_id from participants where staff_id = ?) and " +
+        String sql = "select * from meeting where id in (select meeting_id from participants where staff_id = ?) and " +
                 "state = '预定' and start > now() order by id limit" +
                 " ?,10";
         Class.forName(MySQL.DRIVER);
@@ -245,7 +245,10 @@ public class Inquire {
      * @return 是否冲突
      */
     public boolean inquireMeetingRoomConflict(int meetingRoomId, String startTime, String endTime) throws ClassNotFoundException, SQLException {
-        String sql = "select count(*) from meeting where room = ? and (start between ? and ? or end between ? and ? " +
+        String sql = "select count(*) from meeting where room = ? and state = '预定' and (start between ? and ? or end " +
+                "between ? " +
+                "and ?" +
+                " " +
                 "or (start < ? and end > ?))";
         Class.forName(MySQL.DRIVER);
         Connection connection = DriverManager.getConnection(MySQL.URL, MySQL.USER, MySQL.PASSWORD);
@@ -317,7 +320,7 @@ public class Inquire {
      * @return 会议列表
      */
     public List<Meeting> inquireMyMeetingIn7Days(int staffId) throws ClassNotFoundException, SQLException {
-        String sql = "select * from meeting where id = (select meeting_id from participants where staff_id = ?) and " +
+        String sql = "select * from meeting where id in (select meeting_id from participants where staff_id = ?) and " +
                 "state = " +
                 "'预定' and " +
                 "start > now() " +
@@ -351,7 +354,7 @@ public class Inquire {
      * @return 会议列表
      */
     public List<Meeting> inquireMyCancelMeeting(int staffId) throws ClassNotFoundException, SQLException {
-        String sql = "select * from meeting where id = (select meeting_id from participants where staff_id = ?) and " +
+        String sql = "select * from meeting where id in (select meeting_id from participants where staff_id = ?) and " +
                 "state = " +
                 "'取消' and start > now()";
         Class.forName(MySQL.DRIVER);
