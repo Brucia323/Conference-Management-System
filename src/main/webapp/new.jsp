@@ -47,7 +47,7 @@
             <th>起始时间</th>
             <th>结束时间</th>
         </tr>
-        <c:forEach items="${canceledMeetings}" var="meeting">
+        <c:forEach items="${cancelMeeting}" var="meeting">
             <tr>
                 <td>${meeting.meetingName}</td>
                 <td>${meeting.roomName}</td>
